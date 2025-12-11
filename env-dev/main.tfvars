@@ -25,10 +25,40 @@ ami     = "ami-09c813fb71547fc4f"
 
 app_components = {
   catalogue = {
-    min_nodes     = 2
+    min_nodes     = 1
     max_nodes     = 10
     instance_type = "t3.micro"
     ports         = { ssh = 22, app = 8080 }
+  }
+  cart = {
+    min_nodes     = 1
+    max_nodes     = 10
+    instance_type = "t3.small"
+    ports         = { ssh = 22, app = 8080 }
+  }
+  user = {
+    min_nodes     = 1
+    max_nodes     = 10
+    instance_type = "t3.small"
+    ports         = { ssh = 22, app = 8080 }
+  }
+  payment = {
+    min_nodes     = 1
+    max_nodes     = 10
+    instance_type = "t3.small"
+    ports         = { ssh = 22, app = 8080 }
+  }
+  shipping = {
+    min_nodes     = 1
+    max_nodes     = 10
+    instance_type = "t3.small"
+    ports         = { ssh = 22, app = 8080 }
+  }
+  frontend = {
+    min_nodes     = 1
+    max_nodes     = 10
+    instance_type = "t3.small"
+    ports         = { ssh = 22, app = 80 }
   }
 }
 
