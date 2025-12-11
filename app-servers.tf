@@ -21,6 +21,7 @@ resource "aws_launch_template" "app_instances" {
 resource "aws_autoscaling_group" "app_instances" {
   for_each = var.app_components
 
+  name               = "${each.key}-${var.env}"
   availability_zones = ["us-east-1a","us-east-1b"]
   desired_capacity   = each.value["min_nodes"]
   max_size           = each.value["max_nodes"]
