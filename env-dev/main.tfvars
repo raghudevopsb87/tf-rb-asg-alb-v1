@@ -23,5 +23,12 @@ db_components = {
 zone_id = "Z057881017RC0RRKVUX8E"
 ami     = "ami-09c813fb71547fc4f"
 
-
+app_components = {
+  catalogue = {
+    min_nodes     = 2
+    max_nodes     = 10
+    instance_type = "t3.micro"
+    ports         = { ssh = 22, app = 8080 }
+  }
+}
 
