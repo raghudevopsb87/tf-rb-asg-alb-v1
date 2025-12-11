@@ -23,6 +23,7 @@ resource "aws_lb_target_group" "app_target_group" {
   name     = "${each.key}-${var.env}"
   port     = each.value["ports"]["app"]
   protocol = "HTTP"
+  vpc_id   = var.default_vpc_id
 }
 
 

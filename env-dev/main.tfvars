@@ -32,3 +32,5 @@ app_components = {
   }
 }
 
+default_vpc_id = "vpc-0f995da5da96d9248"
+
