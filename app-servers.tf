@@ -31,7 +31,6 @@ resource "aws_lb_target_group" "app_target_group" {
 
 }
 
-
 resource "aws_autoscaling_group" "app_instances" {
   for_each = var.app_components
 
@@ -74,5 +73,15 @@ resource "aws_lb_listener" "front_end" {
     target_group_arn = aws_lb_target_group.app_target_group[each.key].arn
   }
 }
+
+resource "aws_route53_record" "app_cname_records" {
+  for_each = var.app_components
+  zone_id  = var.zone_id
+  name     = "${each.key}-${var.env}"
+  type     = "CNAME"
+  ttl      = 30
+  records  = [aws_lb.app_instances[each.key].dns_name]
+}
+
 
 
