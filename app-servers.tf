@@ -17,6 +17,14 @@ resource "aws_launch_template" "app_instances" {
 
 }
 
+resource "aws_lb_target_group" "app_target_group" {
+  for_each = var.app_components
+
+  name     = "${each.key}-${var.env}"
+  port     = each.value["ports"]["app"]
+  protocol = "HTTP"
+}
+
 
 resource "aws_autoscaling_group" "app_instances" {
   for_each = var.app_components
