@@ -44,5 +44,18 @@ resource "aws_autoscaling_group" "app_instances" {
   }
 }
 
+resource "aws_lb" "app_instances" {
+  for_each = var.app_components
+
+  name               = "${each.key}-${var.env}"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = [aws_security_group.app_sg[each.key].id]
+  #subnets            = [for subnet in aws_subnet.public : subnet.id]
+
+  tags = {
+    Environment = "${each.key}-${var.env}"
+  }
+}
 
 
