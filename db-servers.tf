@@ -3,7 +3,7 @@ resource "aws_instance" "db_instances" {
 
   ami                    = var.ami
   instance_type          = each.value["instance_type"]
-  vpc_security_group_ids = [aws_security_group.ec2[each.key].id]
+  vpc_security_group_ids = [aws_security_group.db_sg[each.key].id]
   user_data              = templatefile("${path.module}/userdata.sh", { component = each.key, env = var.env })
 
   tags = {
