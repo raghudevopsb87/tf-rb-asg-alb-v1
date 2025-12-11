@@ -33,4 +33,5 @@ app_components = {
 }
 
 default_vpc_id = "vpc-0f995da5da96d9248"
+subnets        = ["subnet-0ce8afa0dde986bc0", "subnet-0629872d39e431ea9"]
 

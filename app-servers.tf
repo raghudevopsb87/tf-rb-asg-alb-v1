@@ -51,7 +51,7 @@ resource "aws_lb" "app_instances" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.app_sg[each.key].id]
-  #subnets            = [for subnet in aws_subnet.public : subnet.id]
+  subnets            = var.subnets
 
   tags = {
     Environment = "${each.key}-${var.env}"
