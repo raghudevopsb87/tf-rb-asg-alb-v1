@@ -58,4 +58,17 @@ resource "aws_lb" "app_instances" {
   }
 }
 
+resource "aws_lb_listener" "front_end" {
+  for_each = var.app_components
+
+  load_balancer_arn = aws_lb.app_instances[each.key].arn
+  port              = each.value["ports"]["app"]
+  protocol          = "HTTP"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.app_target_group[each.key].arn
+  }
+}
+
 
