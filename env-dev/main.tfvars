@@ -21,7 +21,8 @@ db_components = {
 }
 
 zone_id = "Z057881017RC0RRKVUX8E"
-ami     = "ami-09c813fb71547fc4f"
+# ami     = "ami-09c813fb71547fc4f" # This is ami RHEL9-DevOps-Practice
+ami     = "ami-045a533d19c34eeb6" # This is the golden ami
 
 app_components = {
   catalogue = {
