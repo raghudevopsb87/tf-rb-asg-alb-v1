@@ -45,6 +45,8 @@ resource "aws_autoscaling_group" "app_instances" {
     id      = aws_launch_template.app_instances[each.key].id
     version = "$Latest"
   }
+
+  depends_on = [aws_route53_record.app_cname_records]
 }
 
 resource "aws_lb" "app_instances" {
